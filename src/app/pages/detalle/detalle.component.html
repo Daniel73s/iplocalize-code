@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row  bg-light">
+    <div class="col border d-flex justify-content-center align-items-center flex-column">
+      <h1 class="text-dark mt-3">{{info.ip}}</h1>
+      <span class="text-dark text-center mb-2">Esta es la ip publica que estas usando para conectarte a internet.</span>
+    </div>
+  </div>
+  <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+    <div class="list-group list-group-checkable d-grid gap-2 border-0">
+
+      <label class="list-group-item rounded-3 py-3 mb-2" for="listGroupCheckableRadios1">
+        {{info.continent_name}}
+        <span class="d-block small opacity-50">Continente desde donde de conecta </span>
+      </label>
+
+
+      <label class="list-group-item rounded-3 py-3 mb-2" for="listGroupCheckableRadios2">
+        {{info.country_name}} ({{info.country_code}})
+        <span class="d-block small opacity-50">Pais desde se conecta</span>
+      </label>
+
+
+      <label class="list-group-item rounded-3 py-3 mb-2" for="listGroupCheckableRadios3">
+        {{info.city || 'Desconocido'}}
+        <span class="d-block small opacity-50">Ciudad donde se realiza la coneccion</span>
+      </label>
+
+      <label class="list-group-item rounded-3 py-3 mb-2" for="listGroupCheckableRadios3">
+        {{info.ip}}
+        <span class="d-block small opacity-50">Ip con el que se conecta </span>
+      </label>
+
+      <label class="list-group-item rounded-3 py-3 mb-2" for="listGroupCheckableRadios3">
+        <img [src]="info.flag" alt="bandera" width="50" height="50">
+        <span class="d-block small opacity-50">Bandera</span>
+      </label>
+      <label *ngIf="info.connection" class="list-group-item rounded-3 py-3 mb-2" for="listGroupCheckableRadios3">
+        {{info.connection.domain}}
+        <span class="d-block small opacity-50">Compañia que brinda el servicio </span>
+      </label>
+      <label *ngIf="info.timezone" class="list-group-item rounded-3 py-3 mb-2" for="listGroupCheckableRadios3">
+        {{info.timezone.current_time | date:'medium'}}
+        <span class="d-block small opacity-50">Fecha y hora actual</span>
+      </label>
+
+        <div class="d-grid gap-2">
+          <a (click)="abrirUbicacion(info.latitude,info.longitude)" 
+              class="btn btn-primary ">
+          Abrir ubicacion 
+          </a>
+        </div>
+  
+    </div>
+  </div>
+</div>
